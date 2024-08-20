@@ -1,0 +1,20 @@
+.color{
+    color: white;
+}
+
+.nav{
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
