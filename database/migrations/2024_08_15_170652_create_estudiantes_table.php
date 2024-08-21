@@ -3,29 +3,25 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('estudiantes', function (Blueprint $table) {
-            $table->increments('idEstudiante'); // int, primary key, auto_increment
-            $table->string('nombreEstudiante', 250); // varchar(250) not null
-            $table->string('apellidoEstudiante', 250); // varchar(250) not null
-            $table->string('direccionEstudiante', 100); // varchar(100) not null
-            $table->string('telefonoEstudiante', 10)->nullable(); // varchar(10), nullable
-            $table->string('emailEstudiante', 100)->nullable(); // varchar(100), nullable
-            $table->timestamps(); // Optional: adds created_at and updated_at columns
+            $table->increments('idEstudiante');
+            $table->string('nombreEstudiante', 250);
+            $table->string('apellidoEstudiante', 250);
+            $table->string('direccionEstudiante', 100);
+            $table->string('telefonoEstudiante', 10)->nullable();
+            $table->string('emailEstudiante', 100)->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('estudiantes');
     }

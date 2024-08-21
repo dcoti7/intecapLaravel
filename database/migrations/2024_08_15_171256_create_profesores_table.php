@@ -3,28 +3,24 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('profesores', function (Blueprint $table) {
-            $table->increments('idProfesor'); // int, primary key, auto_increment
-            $table->string('nombreProfesor', 100); // varchar(100) not null
-            $table->string('apellidoProfesor', 100); // varchar(100) not null
-            $table->string('profesion', 100); // varchar(100) not null
-            $table->string('email', 100); // varchar(100) not null
-            $table->timestamps(); // Optional: adds created_at and updated_at columns
+            $table->increments('idProfesor');
+            $table->string('nombreProfesor', 100);
+            $table->string('apellidoProfesor', 100);
+            $table->string('profesion', 100);
+            $table->string('emailProfesor', 100);
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('profesores');
     }
