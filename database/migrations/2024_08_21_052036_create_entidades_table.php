@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('nombreProfesor', 100);
             $table->string('apellidoProfesor', 100);
             $table->string('profesion', 100);
-            $table->string('emailProfesor', 100);
+            $table->string('email', 100);
             $table->timestamps(); // Esto añade las columnas created_at y updated_at
         });
 
